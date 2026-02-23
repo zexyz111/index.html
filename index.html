@@ -16,10 +16,9 @@
 }
 
 html,body{
-    height:100%;
+    min-height:100vh;
     width:100%;
     background:#000;
-    overflow:hidden;
 }
 
 /* Видео */
@@ -31,45 +30,45 @@ video{
     height:100%;
     object-fit:cover;
     z-index:-2;
-    filter:brightness(0.8) blur(3px);
+    filter:brightness(0.7) blur(4px);
 }
 
 /* Затемнение */
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.2);
+    background:rgba(0,0,0,0.4);
     z-index:-1;
 }
 
 /* Центр */
 .container{
     position:relative;
-    height:100%;
+    min-height:100vh;
     width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:20px;
+    padding:40px 20px;
 }
 
 /* Ник */
 h1{
-    font-size:clamp(42px,10vw,90px);
+    font-size:clamp(38px,10vw,90px);
     font-weight:800;
-    letter-spacing:18px;
+    letter-spacing:14px;
     text-transform:uppercase;
-    color:rgba(255,255,255,0.85);
+    color:rgba(255,255,255,0.9);
     margin-bottom:25px;
 }
 
 /* Текст */
 p{
-    color:rgba(255,255,255,0.6);
+    color:rgba(255,255,255,0.65);
     font-size:14px;
-    letter-spacing:4px;
+    letter-spacing:3px;
     margin-bottom:50px;
     line-height:1.8;
 }
@@ -80,7 +79,7 @@ p{
     max-width:380px;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:18px;
 }
 
 .buttons a,
@@ -88,21 +87,25 @@ p{
     padding:18px;
     border-radius:50px;
     border:1px solid rgba(255,255,255,0.25);
-    background:rgba(255,255,255,0.07);
-    color:rgba(255,255,255,0.75);
+    background:rgba(255,255,255,0.06);
+    color:rgba(255,255,255,0.85);
     font-size:13px;
     font-weight:600;
-    letter-spacing:6px;
+    letter-spacing:5px;
     text-transform:uppercase;
     text-decoration:none;
     cursor:pointer;
     transition:0.25s;
 }
 
+.buttons a:hover,
+.buttons button:hover{
+    background:rgba(255,255,255,0.15);
+}
+
 .buttons a:active,
 .buttons button:active{
-    transform:scale(0.96);
-    background:rgba(255,255,255,0.14);
+    transform:scale(0.97);
 }
 
 /* Модалка */
@@ -126,10 +129,11 @@ p{
 .modal-box{
     padding:30px 50px;
     border-radius:20px;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.85);
     color:white;
     font-size:18px;
-    letter-spacing:4px;
+    letter-spacing:3px;
+    border:1px solid rgba(255,255,255,0.15);
 }
 </style>
 </head>
@@ -150,29 +154,27 @@ p{
     </p>
 
     <div class="buttons">
-        <a href="https://t.me/hanmaybe">Telegram</a>
-        <a href="#" onclick="showGit()">GitHub</a>
+        <a href="https://t.me/hanmaybe" target="_blank">Telegram</a>
+        <a href="https://github.com/zexyz111" target="_blank">GitHub</a>
         <button onclick="openModal()">Проекты</button>
     </div>
 </div>
 
-<div class="modal" id="modal" onclick="closeModal()">
-    <div class="modal-box">
+<div class="modal" id="modal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
         Скоро...
     </div>
 </div>
 
 <script>
-function showGit(){
-    alert("Предпочитаю не говорить");
-}
-
 function openModal(){
     document.getElementById("modal").classList.add("active");
 }
 
-function closeModal(){
-    document.getElementById("modal").classList.remove("active");
+function closeModal(e){
+    if(e.target.id === "modal"){
+        document.getElementById("modal").classList.remove("active");
+    }
 }
 </script>
 
