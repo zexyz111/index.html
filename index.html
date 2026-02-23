@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hanmaybe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#000000,#111111,#1a1a1a,#000000);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Световые пятна */
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    filter:blur(150px);
+    opacity:0.4;
+}
+
+body::before{
+    background:#7f5af0;
+    top:-200px;
+    left:-200px;
+    animation:float1 8s ease-in-out infinite alternate;
+}
+
+body::after{
+    background:#2cb67d;
+    bottom:-200px;
+    right:-200px;
+    animation:float2 10s ease-in-out infinite alternate;
+}
+
+@keyframes float1{
+    from{transform:translateY(-30px)}
+    to{transform:translateY(40px)}
+}
+
+@keyframes float2{
+    from{transform:translateY(30px)}
+    to{transform:translateY(-40px)}
+}
+
+.container{
+    text-align:center;
+    z-index:2;
+    animation:fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+h1{
+    font-size:72px;
+    font-weight:900;
+    letter-spacing:4px;
+    background:linear-gradient(90deg,#7f5af0,#2cb67d);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:20px;
+}
+
+p{
+    color:#aaa;
+    font-size:18px;
+    max-width:420px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:50px;
+}
+
+.buttons a,
+.buttons button{
+    padding:14px 28px;
+    margin:12px;
+    border-radius:40px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    color:white;
+    font-weight:500;
+    text-decoration:none;
+    cursor:pointer;
+    transition:0.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.buttons a:hover,
+.buttons button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 25px rgba(127,90,240,0.6);
+    border-color:#7f5af0;
+}
+
+/* Модалка */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.modal.active{
+    opacity:1;
+    pointer-events:all;
+}
+
+.modal-box{
+    padding:50px 80px;
+    border-radius:25px;
+    background:rgba(20,20,20,0.8);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    font-size:26px;
+    animation:pop 0.3s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0.8); opacity:0}
+    to{transform:scale(1); opacity:1}
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>@hanmaybe</h1>
+
+    <p>
+        Digital creator. Minimal mind.  
+        Building bots, ideas and quiet projects.
+    </p>
+
+    <div class="buttons">
+        <a href="#">Telegram</a>
+        <a href="#">GitHub</a>
+        <button onclick="openModal()">Мои проекты</button>
+    </div>
+</div>
+
+<div class="modal" id="modal" onclick="closeModal()">
+    <div class="modal-box">
+        Скоро...
+    </div>
+</div>
+
+<script>
+function openModal(){
+    document.getElementById("modal").classList.add("active");
+}
+
+function closeModal(){
+    document.getElementById("modal").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
+
+
