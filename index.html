@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hanmaybe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
@@ -37,7 +46,6 @@ h1{
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     margin-bottom:20px;
-    word-break:break-word;
 }
 
 p{
@@ -73,4 +81,64 @@ p{
     background:#7f5af0;
     border-color:#7f5af0;
 }
+
+/* Модалка */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.modal.active{
+    opacity:1;
+    pointer-events:all;
+}
+
+.modal-box{
+    padding:40px 60px;
+    border-radius:20px;
+    background:#111;
+    font-size:22px;
+}
 </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>@hanmaybe</h1>
+
+    <p>
+        Digital creator. Minimal mind.<br>
+        Building bots, ideas and quiet projects.
+    </p>
+
+    <div class="buttons">
+        <a href="#">Telegram</a>
+        <a href="#">GitHub</a>
+        <button onclick="openModal()">Мои проекты</button>
+    </div>
+</div>
+
+<div class="modal" id="modal" onclick="closeModal()">
+    <div class="modal-box">
+        Скоро...
+    </div>
+</div>
+
+<script>
+function openModal(){
+    document.getElementById("modal").classList.add("active");
+}
+function closeModal(){
+    document.getElementById("modal").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
