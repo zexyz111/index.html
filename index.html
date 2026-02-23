@@ -10,7 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body{
@@ -23,7 +23,7 @@ body{
     text-align:center;
 }
 
-/* Видео фон */
+/* 🎥 Видео фон */
 video{
     position:fixed;
     top:0;
@@ -31,35 +31,71 @@ video{
     width:100%;
     height:100%;
     object-fit:cover;
-    z-index:-2;
+    z-index:-3;
     filter:brightness(0.85);
+    transition: transform 0.2s ease;
 }
 
-/* Затемнение */
+/* 🌑 Градиент поверх */
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.3);
-    z-index:-1;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.5)
+    );
+    z-index:-2;
 }
 
-/* Контент */
+/* ✨ Контент */
+.content{
+    animation: fadeIn 2s ease forwards;
+    opacity:0;
+}
+
+/* 🔥 Заголовок */
 .content h1{
-    font-size:60px;
-    letter-spacing:5px;
+    font-size:70px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    text-shadow:0 0 20px rgba(255,255,255,0.6);
+    animation: glow 3s infinite alternate;
 }
 
+/* 🖤 Подпись */
 .content p{
-    margin-top:10px;
-    font-size:18px;
+    margin-top:15px;
+    font-size:20px;
     opacity:0.8;
+    letter-spacing:2px;
+}
+
+/* 🎬 Анимации */
+@keyframes fadeIn{
+    to{ opacity:1; }
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px rgba(255,255,255,0.4); }
+    to{ text-shadow:0 0 25px rgba(255,255,255,0.9); }
+}
+
+/* 📱 Адаптация */
+@media(max-width:768px){
+    .content h1{
+        font-size:45px;
+    }
+    .content p{
+        font-size:16px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<video autoplay muted loop playsinline>
+<video autoplay muted loop playsinline id="bgVideo">
     <source src="video.mp4" type="video/mp4">
 </video>
 
@@ -69,6 +105,16 @@ video{
     <h1>HAN</h1>
     <p>@hanmaybe</p>
 </div>
+
+<script>
+/* 🌊 Лёгкий Parallax */
+document.addEventListener("mousemove", function(e){
+    let x = (window.innerWidth / 2 - e.pageX) / 100;
+    let y = (window.innerHeight / 2 - e.pageY) / 100;
+    document.getElementById("bgVideo").style.transform =
+        "scale(1.05) translate(" + x + "px," + y + "px)";
+});
+</script>
 
 </body>
 </html>
