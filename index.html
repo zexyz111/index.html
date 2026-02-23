@@ -119,22 +119,23 @@ p{
     </p>
 
     <div class="buttons">
-        <a href="#">Telegram</a>
-        <a href="#">GitHub</a>
-        <button onclick="openModal()">Мои проекты</button>
+        <a href="https://t.me/hanmaybe" target="_blank">Telegram</a>
+        <button onclick="openGithub()">GitHub</button>
     </div>
 </div>
 
 <div class="modal" id="modal" onclick="closeModal()">
-    <div class="modal-box">
-        Скоро...
+    <div class="modal-box" id="modalText">
+        ...
     </div>
 </div>
 
 <script>
-function openModal(){
+function openGithub(){
+    document.getElementById("modalText").innerText = "предпочитаю не говорить";
     document.getElementById("modal").classList.add("active");
 }
+
 function closeModal(){
     document.getElementById("modal").classList.remove("active");
 }
