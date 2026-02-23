@@ -31,7 +31,7 @@ video{
     height:100%;
     object-fit:cover;
     z-index:-3;
-    filter:brightness(0.8);
+    filter:brightness(0.75);
     transition:transform 0.2s ease;
 }
 
@@ -39,21 +39,26 @@ video{
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.35);
+    background:rgba(0,0,0,0.4);
     z-index:-2;
 }
 
-/* 🔮 стекло */
+/* 🔮 МУТНОЕ СТЕКЛО */
 .glass{
     position:relative;
     padding:60px 80px;
     border-radius:30px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-    border:1px solid rgba(255,255,255,0.2);
-    box-shadow:0 0 40px rgba(255,255,255,0.1),
-               0 20px 60px rgba(0,0,0,0.6);
+
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(45px) saturate(160%);
+    -webkit-backdrop-filter:blur(45px) saturate(160%);
+
+    border:1px solid rgba(255,255,255,0.35);
+    box-shadow:
+        0 0 60px rgba(255,255,255,0.15),
+        inset 0 0 30px rgba(255,255,255,0.1),
+        0 25px 80px rgba(0,0,0,0.8);
+
     text-align:center;
 
     opacity:0;
@@ -71,7 +76,7 @@ video{
     height:50%;
     border-radius:30px;
     background:linear-gradient(to bottom,
-        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.35),
         transparent);
     pointer-events:none;
 }
@@ -80,13 +85,13 @@ video{
 .glass h1{
     font-size:65px;
     letter-spacing:6px;
-    text-shadow:0 0 25px rgba(255,255,255,0.8);
+    text-shadow:0 0 25px rgba(255,255,255,0.9);
 }
 
 .glass p{
     margin-top:10px;
     font-size:18px;
-    opacity:0.85;
+    opacity:0.9;
     letter-spacing:3px;
 }
 
@@ -102,9 +107,12 @@ video{
 .btn{
     padding:12px 25px;
     border-radius:15px;
-    background:rgba(255,255,255,0.1);
-    border:1px solid rgba(255,255,255,0.2);
-    backdrop-filter:blur(15px);
+
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(30px) saturate(150%);
+    -webkit-backdrop-filter:blur(30px) saturate(150%);
+
+    border:1px solid rgba(255,255,255,0.4);
     color:white;
     text-decoration:none;
     font-size:14px;
@@ -122,9 +130,9 @@ video{
 .btn:nth-child(3){ animation-delay:1s; }
 
 .btn:hover{
-    background:rgba(255,255,255,0.25);
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    background:rgba(255,255,255,0.35);
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.6);
 }
 
 /* popup */
@@ -134,8 +142,8 @@ video{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(15px);
     opacity:0;
     pointer-events:none;
     transition:0.3s ease;
@@ -149,9 +157,9 @@ video{
 .popup-content{
     padding:40px 60px;
     border-radius:20px;
-    background:rgba(255,255,255,0.1);
-    backdrop-filter:blur(25px);
-    border:1px solid rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(40px);
+    border:1px solid rgba(255,255,255,0.4);
     text-align:center;
     font-size:20px;
 }
