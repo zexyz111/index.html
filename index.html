@@ -21,7 +21,7 @@ html,body{
     background:#000;
 }
 
-/* Видео */
+/* Видео фон */
 video{
     position:fixed;
     top:0;
@@ -30,18 +30,23 @@ video{
     height:100%;
     object-fit:cover;
     z-index:-2;
-    filter:brightness(0.7) blur(4px);
+    filter:brightness(0.9);
+    pointer-events:none;
 }
 
-/* Затемнение */
+/* Мягкий градиент поверх */
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.4);
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.45)
+    );
     z-index:-1;
 }
 
-/* Центр */
+/* Контейнер */
 .container{
     position:relative;
     min-height:100vh;
@@ -58,7 +63,6 @@ video{
     animation:fadeIn 1.2s ease forwards;
 }
 
-/* Анимация появления */
 @keyframes fadeIn{
     to{
         opacity:1;
@@ -72,13 +76,13 @@ h1{
     font-weight:800;
     letter-spacing:14px;
     text-transform:uppercase;
-    color:rgba(255,255,255,0.9);
+    color:rgba(255,255,255,0.95);
     margin-bottom:25px;
 }
 
-/* Текст */
+/* Подтекст */
 p{
-    color:rgba(255,255,255,0.65);
+    color:rgba(255,255,255,0.7);
     font-size:14px;
     letter-spacing:3px;
     margin-bottom:50px;
@@ -100,10 +104,10 @@ p{
     border-radius:50px;
     border:1px solid rgba(255,255,255,0.25);
     background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
 
-    color:rgba(255,255,255,0.9);
+    color:white;
     font-size:13px;
     font-weight:600;
     letter-spacing:5px;
@@ -157,7 +161,7 @@ p{
 </head>
 <body>
 
-<video autoplay muted loop playsinline>
+<video autoplay muted loop playsinline preload="auto">
     <source src="bg.mp4" type="video/mp4">
 </video>
 
