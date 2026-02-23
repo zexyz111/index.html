@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>hanmaybe</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -33,16 +33,8 @@ body{
     width:100%;
     height:100%;
     object-fit:cover;
-    z-index:-2;
-    filter:brightness(0.6); /* фон теперь видно */
-}
-
-/* Лёгкое затемнение */
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.45); /* меньше затемнения */
     z-index:-1;
+    filter:brightness(0.9) blur(3px); /* -10% яркости + лёгкий blur */
 }
 
 /* Контент */
@@ -54,21 +46,21 @@ body{
 
 /* Ник */
 h1{
-    font-size:clamp(38px,9vw,80px);
-    font-weight:600; /* жирнее */
-    letter-spacing:10px; /* растянутый */
+    font-size:clamp(40px,9vw,85px);
+    font-weight:700;
+    letter-spacing:12px; /* растянутый */
     text-transform:uppercase;
     margin-bottom:25px;
-    text-shadow:0 0 15px rgba(0,0,0,0.6);
+    text-shadow:0 0 25px rgba(0,0,0,0.6);
 }
 
 /* Описание */
 p{
     font-size:15px;
-    color:#ddd;
     margin-bottom:45px;
     line-height:1.8;
     letter-spacing:2px;
+    text-shadow:0 0 15px rgba(0,0,0,0.6);
 }
 
 /* Кнопки */
@@ -82,29 +74,30 @@ p{
 .buttons button{
     padding:16px;
     border-radius:50px;
-    border:1px solid rgba(255,255,255,0.25);
-    background:rgba(0,0,0,0.55);
+    border:1px solid rgba(255,255,255,0.4);
+    background:rgba(0,0,0,0.35);
     color:white;
     font-size:14px;
     font-weight:600;
-    letter-spacing:4px; /* растянутые кнопки */
+    letter-spacing:4px;
     text-transform:uppercase;
     text-decoration:none;
     cursor:pointer;
     transition:0.3s ease;
+    backdrop-filter:blur(5px);
 }
 
 .buttons a:active,
 .buttons button:active{
-    transform:scale(0.97);
-    background:rgba(255,255,255,0.15);
+    transform:scale(0.96);
+    background:rgba(255,255,255,0.2);
 }
 
 /* Модалка */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.6);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -133,8 +126,6 @@ p{
 <video class="video-bg" autoplay muted loop playsinline>
     <source src="background.mp4" type="video/mp4">
 </video>
-
-<div class="overlay"></div>
 
 <div class="container">
     <h1>@hanmaybe</h1>
