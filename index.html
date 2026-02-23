@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hanmaybe</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
-
 <style>
 *{
     margin:0;
@@ -23,18 +14,26 @@ body{
     text-align:center;
     color:white;
     overflow:hidden;
-    background:#000;
+    background:black;
 }
 
-/* Видео фон */
+/* Видео */
 .video-bg{
     position:fixed;
     inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
+    z-index:-2;
+    filter:brightness(0.8) blur(4px); /* 20% темнее + мягкий blur */
+}
+
+/* ЛЁГКОЕ затемнение поверх */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.2); /* ровно 20% */
     z-index:-1;
-    filter:brightness(0.9) blur(3px); /* -10% яркости + лёгкий blur */
 }
 
 /* Контент */
@@ -46,121 +45,49 @@ body{
 
 /* Ник */
 h1{
-    font-size:clamp(40px,9vw,85px);
+    font-size:clamp(42px,9vw,85px);
     font-weight:700;
-    letter-spacing:12px; /* растянутый */
+    letter-spacing:14px; /* сильнее растянут */
     text-transform:uppercase;
     margin-bottom:25px;
-    text-shadow:0 0 25px rgba(0,0,0,0.6);
+    text-shadow:0 0 30px rgba(0,0,0,0.6);
 }
 
 /* Описание */
 p{
-    font-size:15px;
-    margin-bottom:45px;
-    line-height:1.8;
-    letter-spacing:2px;
-    text-shadow:0 0 15px rgba(0,0,0,0.6);
+    font-size:16px;
+    margin-bottom:50px;
+    line-height:1.9;
+    letter-spacing:3px;
+    text-shadow:0 0 20px rgba(0,0,0,0.6);
 }
 
 /* Кнопки */
 .buttons{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:20px;
 }
 
 .buttons a,
 .buttons button{
-    padding:16px;
+    padding:18px;
     border-radius:50px;
-    border:1px solid rgba(255,255,255,0.4);
-    background:rgba(0,0,0,0.35);
+    border:1px solid rgba(255,255,255,0.5);
+    background:rgba(255,255,255,0.05);
     color:white;
     font-size:14px;
     font-weight:600;
-    letter-spacing:4px;
+    letter-spacing:5px;
     text-transform:uppercase;
     text-decoration:none;
     cursor:pointer;
-    transition:0.3s ease;
-    backdrop-filter:blur(5px);
+    transition:0.25s ease;
+    backdrop-filter:blur(6px);
 }
 
 .buttons a:active,
 .buttons button:active{
     transform:scale(0.96);
-    background:rgba(255,255,255,0.2);
-}
-
-/* Модалка */
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    pointer-events:none;
-    transition:0.3s ease;
-}
-
-.modal.active{
-    opacity:1;
-    pointer-events:all;
-}
-
-.modal-box{
-    padding:35px 50px;
-    border-radius:18px;
-    background:#111;
-    font-size:20px;
-    letter-spacing:5px;
-    text-transform:uppercase;
 }
 </style>
-</head>
-<body>
-
-<video class="video-bg" autoplay muted loop playsinline>
-    <source src="background.mp4" type="video/mp4">
-</video>
-
-<div class="container">
-    <h1>@hanmaybe</h1>
-
-    <p>
-        Digital creator. Minimal mind.<br>
-        Building bots and quiet projects.
-    </p>
-
-    <div class="buttons">
-        <a href="https://t.me/hanmaybe" target="_blank">Telegram</a>
-        <button onclick="openGithub()">GitHub</button>
-        <button onclick="openProjects()">Проекты</button>
-    </div>
-</div>
-
-<div class="modal" id="modal" onclick="closeModal()">
-    <div class="modal-box" id="modalText"></div>
-</div>
-
-<script>
-function openGithub(){
-    document.getElementById("modalText").innerText = "предпочитаю не говорить";
-    document.getElementById("modal").classList.add("active");
-}
-
-function openProjects(){
-    document.getElementById("modalText").innerText = "Скоро";
-    document.getElementById("modal").classList.add("active");
-}
-
-function closeModal(){
-    document.getElementById("modal").classList.remove("active");
-}
-</script>
-
-</body>
-</html>
