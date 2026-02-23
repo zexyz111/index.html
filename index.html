@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>hanmaybe</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -26,7 +26,7 @@ body{
     background:#000;
 }
 
-/* Видео */
+/* Видео фон */
 .video-bg{
     position:fixed;
     inset:0;
@@ -34,18 +34,18 @@ body{
     height:100%;
     object-fit:cover;
     z-index:-2;
-    filter:brightness(0.35);
+    filter:brightness(0.6); /* фон теперь видно */
 }
 
-/* Затемнение */
+/* Лёгкое затемнение */
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.75);
+    background:rgba(0,0,0,0.45); /* меньше затемнения */
     z-index:-1;
 }
 
-/* Контейнер */
+/* Контент */
 .container{
     width:100%;
     max-width:500px;
@@ -54,20 +54,21 @@ body{
 
 /* Ник */
 h1{
-    font-size:clamp(34px,8vw,70px);
-    font-weight:300;
-    letter-spacing:6px;
+    font-size:clamp(38px,9vw,80px);
+    font-weight:600; /* жирнее */
+    letter-spacing:10px; /* растянутый */
     text-transform:uppercase;
-    margin-bottom:20px;
+    margin-bottom:25px;
+    text-shadow:0 0 15px rgba(0,0,0,0.6);
 }
 
 /* Описание */
 p{
-    font-size:14px;
-    color:#aaa;
+    font-size:15px;
+    color:#ddd;
     margin-bottom:45px;
-    line-height:1.7;
-    letter-spacing:1px;
+    line-height:1.8;
+    letter-spacing:2px;
 }
 
 /* Кнопки */
@@ -81,11 +82,12 @@ p{
 .buttons button{
     padding:16px;
     border-radius:50px;
-    border:1px solid rgba(255,255,255,0.15);
-    background:rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.25);
+    background:rgba(0,0,0,0.55);
     color:white;
-    font-size:13px;
-    letter-spacing:3px;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:4px; /* растянутые кнопки */
     text-transform:uppercase;
     text-decoration:none;
     cursor:pointer;
@@ -94,15 +96,15 @@ p{
 
 .buttons a:active,
 .buttons button:active{
-    transform:scale(0.96);
-    background:rgba(255,255,255,0.1);
+    transform:scale(0.97);
+    background:rgba(255,255,255,0.15);
 }
 
 /* Модалка */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.9);
+    background:rgba(0,0,0,0.85);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -120,8 +122,8 @@ p{
     padding:35px 50px;
     border-radius:18px;
     background:#111;
-    font-size:18px;
-    letter-spacing:3px;
+    font-size:20px;
+    letter-spacing:5px;
     text-transform:uppercase;
 }
 </style>
