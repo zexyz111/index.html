@@ -82,7 +82,6 @@ p{
     border-color:#7f5af0;
 }
 
-/* Модалка */
 .modal{
     position:fixed;
     inset:0;
@@ -115,24 +114,28 @@ p{
 
     <p>
         Digital creator. Minimal mind.<br>
-        Building bots, ideas and quiet projects.
+        Building bots and quiet projects.
     </p>
 
     <div class="buttons">
         <a href="https://t.me/hanmaybe" target="_blank">Telegram</a>
         <button onclick="openGithub()">GitHub</button>
+        <button onclick="openProjects()">Проекты</button>
     </div>
 </div>
 
 <div class="modal" id="modal" onclick="closeModal()">
-    <div class="modal-box" id="modalText">
-        ...
-    </div>
+    <div class="modal-box" id="modalText"></div>
 </div>
 
 <script>
 function openGithub(){
     document.getElementById("modalText").innerText = "предпочитаю не говорить";
+    document.getElementById("modal").classList.add("active");
+}
+
+function openProjects(){
+    document.getElementById("modalText").innerText = "Скоро";
     document.getElementById("modal").classList.add("active");
 }
 
