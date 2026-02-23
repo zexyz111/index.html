@@ -43,7 +43,7 @@ video{
     z-index:-2;
 }
 
-/* 🔮 стеклянная карточка */
+/* 🔮 стекло */
 .glass{
     position:relative;
     padding:60px 80px;
@@ -55,8 +55,10 @@ video{
     box-shadow:0 0 40px rgba(255,255,255,0.1),
                0 20px 60px rgba(0,0,0,0.6);
     text-align:center;
-    animation:fadeIn 1.5s ease forwards;
+
     opacity:0;
+    transform:translateY(40px) scale(0.95);
+    animation:glassAppear 1.2s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 /* блик */
@@ -109,7 +111,15 @@ video{
     letter-spacing:1px;
     cursor:pointer;
     transition:all 0.3s ease;
+
+    opacity:0;
+    transform:translateY(20px);
+    animation:btnAppear 0.8s ease forwards;
 }
+
+.btn:nth-child(1){ animation-delay:0.6s; }
+.btn:nth-child(2){ animation-delay:0.8s; }
+.btn:nth-child(3){ animation-delay:1s; }
 
 .btn:hover{
     background:rgba(255,255,255,0.25);
@@ -146,10 +156,19 @@ video{
     font-size:20px;
 }
 
-/* анимация */
-@keyframes fadeIn{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
+/* Анимации */
+@keyframes glassAppear{
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes btnAppear{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* адаптация */
@@ -184,7 +203,6 @@ video{
     </div>
 </div>
 
-<!-- popup -->
 <div class="popup" id="popup">
     <div class="popup-content">
         Скоро 🚀
@@ -194,7 +212,6 @@ video{
 </div>
 
 <script>
-/* параллакс */
 document.addEventListener("mousemove", function(e){
     let x=(window.innerWidth/2-e.pageX)/120;
     let y=(window.innerHeight/2-e.pageY)/120;
@@ -202,11 +219,9 @@ document.addEventListener("mousemove", function(e){
         "scale(1.05) translate("+x+"px,"+y+"px)";
 });
 
-/* popup */
 function openPopup(){
     document.getElementById("popup").classList.add("active");
 }
-
 function closePopup(){
     document.getElementById("popup").classList.remove("active");
 }
