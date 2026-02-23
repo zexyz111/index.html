@@ -14,11 +14,11 @@
 }
 
 body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    height:100vh;
+    display:grid;
+    place-items:center;
     color:white;
+    overflow:hidden;
 }
 
 /* Видео */
@@ -58,6 +58,7 @@ video{
     opacity:0;
     transform:translateY(40px) scale(0.96);
     animation:glassAppear 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+    max-width:90%;
 }
 
 /* Верхний блик */
@@ -75,7 +76,7 @@ video{
     pointer-events:none;
 }
 
-/* 🔥 HAN с аккуратным градиентом */
+/* HAN */
 .glass h1{
     font-size:65px;
     font-weight:800;
@@ -83,7 +84,6 @@ video{
     transform:scaleX(1.25);
     display:inline-block;
     margin-bottom:5px;
-
     background:linear-gradient(90deg,#ffffff,#e5e5e5,#ffffff);
     background-size:180% auto;
     -webkit-background-clip:text;
@@ -91,7 +91,6 @@ video{
     animation:shine 6s linear infinite;
 }
 
-/* Перелив */
 @keyframes shine{
     0%{ background-position:0% center; }
     100%{ background-position:180% center; }
