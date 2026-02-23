@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@hanmaybe</title>
+<title>hanmaybe</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -17,19 +17,13 @@
 
 html,body{
     height:100%;
-}
-
-body{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:100%;
     background:#000;
     overflow:hidden;
-    color:rgba(255,255,255,0.85);
 }
 
-/* Видео фон */
-.bg-video{
+/* Видео */
+video{
     position:fixed;
     top:0;
     left:0;
@@ -37,9 +31,10 @@ body{
     height:100%;
     object-fit:cover;
     z-index:-2;
+    filter:brightness(0.8) blur(3px);
 }
 
-/* Затемнение 20% */
+/* Затемнение */
 .overlay{
     position:fixed;
     inset:0;
@@ -47,37 +42,45 @@ body{
     z-index:-1;
 }
 
-/* Контент */
+/* Центр */
 .container{
-    width:90%;
-    max-width:600px;
+    position:relative;
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    padding:20px;
 }
 
 /* Ник */
 h1{
-    font-size:clamp(44px,10vw,90px);
-    font-weight:700;
-    letter-spacing:16px;
+    font-size:clamp(42px,10vw,90px);
+    font-weight:800;
+    letter-spacing:18px;
     text-transform:uppercase;
+    color:rgba(255,255,255,0.85);
     margin-bottom:25px;
-    color:rgba(255,255,255,0.9);
 }
 
-/* Описание */
+/* Текст */
 p{
-    font-size:16px;
-    margin-bottom:55px;
-    line-height:1.9;
-    letter-spacing:3px;
-    color:rgba(255,255,255,0.65);
+    color:rgba(255,255,255,0.6);
+    font-size:14px;
+    letter-spacing:4px;
+    margin-bottom:50px;
+    line-height:1.8;
 }
 
 /* Кнопки */
 .buttons{
+    width:100%;
+    max-width:380px;
     display:flex;
     flex-direction:column;
-    gap:22px;
+    gap:20px;
 }
 
 .buttons a,
@@ -86,14 +89,14 @@ p{
     border-radius:50px;
     border:1px solid rgba(255,255,255,0.25);
     background:rgba(255,255,255,0.07);
-    color:rgba(255,255,255,0.8);
-    font-size:14px;
+    color:rgba(255,255,255,0.75);
+    font-size:13px;
     font-weight:600;
     letter-spacing:6px;
     text-transform:uppercase;
     text-decoration:none;
     cursor:pointer;
-    transition:0.25s ease;
+    transition:0.25s;
 }
 
 .buttons a:active,
@@ -106,7 +109,7 @@ p{
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.7);
+    background:rgba(0,0,0,0.6);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -117,29 +120,29 @@ p{
 
 .modal.active{
     opacity:1;
-    pointer-events:auto;
+    pointer-events:all;
 }
 
 .modal-box{
-    padding:30px 40px;
-    background:#111;
-    border-radius:16px;
-    letter-spacing:5px;
-    text-transform:uppercase;
+    padding:30px 50px;
+    border-radius:20px;
+    background:rgba(0,0,0,0.8);
+    color:white;
+    font-size:18px;
+    letter-spacing:4px;
 }
 </style>
 </head>
-
 <body>
 
-<video class="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="background.mp4" type="video/mp4">
+<video autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 
 <div class="container">
-    <h1>@hanmaybe</h1>
+    <h1>@HANMAYBE</h1>
 
     <p>
         Digital creator.<br>
@@ -147,25 +150,27 @@ p{
     </p>
 
     <div class="buttons">
-        <a href="https://t.me/hanmaybe" target="_blank">Telegram</a>
-        <button onclick="openGithub()">GitHub</button>
-        <button onclick="openProjects()">Проекты</button>
+        <a href="https://t.me/hanmaybe">Telegram</a>
+        <a href="#" onclick="showGit()">GitHub</a>
+        <button onclick="openModal()">Проекты</button>
     </div>
 </div>
 
 <div class="modal" id="modal" onclick="closeModal()">
-    <div class="modal-box" id="modalText"></div>
+    <div class="modal-box">
+        Скоро...
+    </div>
 </div>
 
 <script>
-function openGithub(){
-    document.getElementById("modalText").innerText="предпочитаю не говорить";
+function showGit(){
+    alert("Предпочитаю не говорить");
+}
+
+function openModal(){
     document.getElementById("modal").classList.add("active");
 }
-function openProjects(){
-    document.getElementById("modalText").innerText="Скоро";
-    document.getElementById("modal").classList.add("active");
-}
+
 function closeModal(){
     document.getElementById("modal").classList.remove("active");
 }
