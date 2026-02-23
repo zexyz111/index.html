@@ -39,58 +39,37 @@ video{
     position:fixed;
     inset:0;
     background:radial-gradient(circle at center,
-        rgba(0,0,0,0.2) 0%,
-        rgba(0,0,0,0.6) 85%);
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.65) 85%);
     z-index:-2;
 }
 
-/* Glass */
+/* 💎 Glass — затемнена ~18% */
 .glass{
     padding:65px 90px;
     border-radius:35px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(55px) saturate(180%);
-    border:1px solid rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.08); /* было 0.12 */
+    backdrop-filter:blur(55px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.22); /* было 0.35 */
     box-shadow:
-        0 0 80px rgba(255,255,255,0.15),
-        0 25px 80px rgba(0,0,0,0.6);
+        0 20px 60px rgba(0,0,0,0.7);
     text-align:center;
-    animation:fadeUp 1.2s ease forwards;
+    animation:fadeUp 1s ease forwards;
     opacity:0;
     transform:translateY(40px);
 }
 
-/* 🔥 HAN анимация */
 .glass h1{
     font-size:70px;
     letter-spacing:10px;
     transform:scaleX(1.4);
-    position:relative;
     display:inline-block;
-    animation:
-        textFade 1.4s ease forwards,
-        textGlow 4s ease-in-out infinite 1.4s;
-}
-
-/* shimmer эффект */
-.glass h1::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        120deg,
-        transparent 30%,
-        rgba(255,255,255,0.8),
-        transparent 70%
-    );
-    transform:translateX(-120%);
-    animation:shine 4s infinite 2s;
 }
 
 .glass p{
     margin-top:15px;
     font-size:18px;
-    opacity:0.9;
+    opacity:0.85;
     letter-spacing:4px;
 }
 
@@ -105,32 +84,30 @@ video{
 .btn{
     padding:13px 28px;
     border-radius:18px;
-    background:rgba(255,255,255,0.18);
-    backdrop-filter:blur(25px);
-    border:1px solid rgba(255,255,255,0.45);
+    background:rgba(255,255,255,0.14);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.25);
     color:white;
     text-decoration:none;
     font-size:14px;
     letter-spacing:1px;
     cursor:pointer;
-    transition:all 0.3s ease;
+    transition:0.3s ease;
 }
 
 .btn:hover{
-    background:rgba(255,255,255,0.35);
-    transform:scale(1.08);
-    box-shadow:0 0 25px rgba(255,255,255,0.4);
+    background:rgba(255,255,255,0.25);
+    transform:scale(1.05);
 }
 
-/* Popup */
 .popup{
     position:fixed;
     inset:0;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(20px);
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(15px);
     opacity:0;
     pointer-events:none;
     transition:0.4s ease;
@@ -144,53 +121,24 @@ video{
 .popup-content{
     padding:45px 70px;
     border-radius:25px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(40px);
-    border:1px solid rgba(255,255,255,0.4);
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(35px);
+    border:1px solid rgba(255,255,255,0.25);
     text-align:center;
     font-size:22px;
-    transform:scale(0.8);
-    transition:0.4s ease;
+    transform:scale(0.9);
+    transition:0.3s ease;
 }
 
 .popup.active .popup-content{
     transform:scale(1);
 }
 
-/* Анимации */
 @keyframes fadeUp{
     to{
         opacity:1;
         transform:translateY(0);
     }
-}
-
-@keyframes textFade{
-    from{
-        opacity:0;
-        letter-spacing:30px;
-    }
-    to{
-        opacity:1;
-        letter-spacing:10px;
-    }
-}
-
-@keyframes textGlow{
-    0%,100%{
-        text-shadow:
-            0 0 20px rgba(255,255,255,0.8);
-    }
-    50%{
-        text-shadow:
-            0 0 40px rgba(255,255,255,1);
-    }
-}
-
-@keyframes shine{
-    0%{ transform:translateX(-120%); }
-    50%{ transform:translateX(120%); }
-    100%{ transform:translateX(120%); }
 }
 
 @media(max-width:768px){
