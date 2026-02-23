@@ -52,6 +52,18 @@ video{
     justify-content:center;
     text-align:center;
     padding:40px 20px;
+
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeIn 1.2s ease forwards;
+}
+
+/* Анимация появления */
+@keyframes fadeIn{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* Ник */
@@ -87,20 +99,25 @@ p{
     padding:18px;
     border-radius:50px;
     border:1px solid rgba(255,255,255,0.25);
-    background:rgba(255,255,255,0.06);
-    color:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    color:rgba(255,255,255,0.9);
     font-size:13px;
     font-weight:600;
     letter-spacing:5px;
     text-transform:uppercase;
     text-decoration:none;
     cursor:pointer;
-    transition:0.25s;
+    transition:0.3s;
 }
 
 .buttons a:hover,
 .buttons button:hover{
-    background:rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.18);
+    border:1px solid rgba(255,255,255,0.4);
+    transform:translateY(-3px);
 }
 
 .buttons a:active,
@@ -130,10 +147,11 @@ p{
     padding:30px 50px;
     border-radius:20px;
     background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
     color:white;
     font-size:18px;
     letter-spacing:3px;
-    border:1px solid rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.2);
 }
 </style>
 </head>
