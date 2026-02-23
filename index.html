@@ -41,7 +41,7 @@ video{
     z-index:-2;
 }
 
-/* 🔥 ТЕМНЫЙ GLASS */
+/* Glass */
 .glass{
     position:relative;
     width:90%;
@@ -68,7 +68,7 @@ video{
     animation:glassAppear 1.2s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-/* Верхний мягкий блик */
+/* Блик */
 .glass::before{
     content:"";
     position:absolute;
@@ -88,7 +88,7 @@ video{
     font-size:52px;
     font-weight:800;
     letter-spacing:8px;
-    margin-bottom:10px;
+    margin-bottom:8px;
 
     background:linear-gradient(90deg,#ffffff,#dcdcdc,#ffffff);
     background-size:180% auto;
@@ -97,19 +97,21 @@ video{
     animation:shine 6s linear infinite;
 }
 
-@keyframes shine{
-    0%{ background-position:0% center; }
-    100%{ background-position:180% center; }
-}
-
+/* Username — исправлен перекос */
 .glass p{
     font-size:16px;
-    opacity:0.75;
-    letter-spacing:3px;
+    opacity:0.8;
     margin-bottom:30px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:2px;
+
+    letter-spacing:2px;
 }
 
-/* КНОПКИ — теперь идеально ровные */
+/* Кнопки */
 .buttons{
     width:100%;
     display:flex;
@@ -117,7 +119,6 @@ video{
     gap:16px;
 }
 
-/* Общий стиль */
 .btn{
     width:100%;
     padding:14px 0;
@@ -192,6 +193,11 @@ video{
         opacity:1;
         transform:translateY(0);
     }
+}
+
+@keyframes shine{
+    0%{ background-position:0% center; }
+    100%{ background-position:180% center; }
 }
 
 @media(max-width:768px){
