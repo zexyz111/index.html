@@ -141,34 +141,6 @@ video{
     transform:translateY(-3px);
 }
 
-/* Popup */
-.popup{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,0.8);
-    backdrop-filter:blur(10px);
-    opacity:0;
-    pointer-events:none;
-    transition:0.3s ease;
-}
-
-.popup.active{
-    opacity:1;
-    pointer-events:auto;
-}
-
-.popup-content{
-    padding:35px 50px;
-    border-radius:20px;
-    background:rgba(20,20,25,0.85);
-    border:1px solid rgba(0,0,0,0.7);
-    text-align:center;
-    font-size:18px;
-}
-
 /* Анимации */
 @keyframes glassAppear{
     to{
@@ -210,16 +182,8 @@ video{
 
     <div class="buttons">
         <a href="https://t.me/hanmaybee" target="_blank" class="btn">Telegram</a>
-        <button class="btn" onclick="openPopup()">Project</button>
+        <a href="https://t.me/project_han" target="_blank" class="btn">Project</a>
         <a href="https://youtube.com" target="_blank" class="btn">Just YouTube xdd)</a>
-    </div>
-</div>
-
-<div class="popup" id="popup">
-    <div class="popup-content">
-        Скоро 🚀
-        <br><br>
-        <button class="btn" onclick="closePopup()">Закрыть</button>
     </div>
 </div>
 
@@ -230,13 +194,6 @@ document.addEventListener("mousemove", function(e){
     document.getElementById("bgVideo").style.transform=
         "scale(1.05) translate("+x+"px,"+y+"px)";
 });
-
-function openPopup(){
-    document.getElementById("popup").classList.add("active");
-}
-function closePopup(){
-    document.getElementById("popup").classList.remove("active");
-}
 </script>
 
 </body>
